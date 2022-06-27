@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-#define TERMINAL "st"
+#define TERMINAL "alacritty"
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel size of windows */
 static const unsigned int gappx     = 5;        /* gaps size between windows */
@@ -76,13 +76,13 @@ static char *endx[] = { "/bin/sh", "-c", "endx", "externalpipe", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
     { MODKEY,                       XK_o,       spawn,      SHCMD(TERMINAL " -e nvim -c VimwikiIndex") },
-    { MODKEY,                       XK_r,       spawn,      SHCMD(TERMINAL " -e spt") },
     { MODKEY,                       XK_w,       spawn,      SHCMD("librewolf") },
     { MODKEY,                       XK_Print,   spawn,      SHCMD("maim -s -u | xclip -selection clipboard -t image/png -i.png") },
     { MODKEY,                       XK_F3,      spawn,          SHCMD(TERMINAL " -e pulsemixer") },
     { MODKEY,                       XK_p,      spawn,          SHCMD("passmenu") },
     { MODKEY,                       XK_F4,      spawn,          SHCMD(TERMINAL " -e curl wttr.in") },
     { MODKEY,                       XK_F11,     spawn,      SHCMD("mpv --no-input-default-bindings av://v4l2:/dev/video0 --profile=low-latency --untimed)") },
+    { MODKEY|ShiftMask,		    XK_w,	spawn,		SHCMD("networkmanager_dmenu") },
 	{ MODKEY,                       XK_s,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,	                    XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_g,      togglebar,      {0} },
@@ -95,6 +95,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_z,	   zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,	                    XK_q,      killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_q,      spawn,       SHCMD("slock") },
 	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
